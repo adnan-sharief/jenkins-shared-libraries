@@ -1,4 +1,4 @@
-def call(Map config = [:]) {
+/*def call(Map config = [:]) {
     def imageName = config.imageName ?: error("Image name is required")
     def imageTag = config.imageTag ?: 'latest'
     def dockerfile = config.dockerfile ?: 'Dockerfile'
@@ -9,4 +9,7 @@ def call(Map config = [:]) {
     sh """
         docker build -t ${imageName}:${imageTag} -t ${imageName}:latest -f ${dockerfile} ${context}
     """
+}*/
+def call(String Project, String ImgTag, String DHUser){
+    sh "docker build -t ${DHUser}/${Project}:${ImgTag} ."
 }
